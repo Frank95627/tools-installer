@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  h1 Resultados de Búsqueda
+  if results.google && results.google.length
+    h2 Resultados de Google
+    ul
+      each result in results.google
+        li
+          h2= result.title
+          p= result.snippet
+          a(href=result.link)= result.link
+  if results.gemini && results.gemini.pair
+    h2 Resultados de Gemini
+    ul
+      li
+        h2= results.gemini.pair
+        p Precio de Compra: #{results.gemini.bid}
+        p Precio de Venta: #{results.gemini.ask}
+  else
+    p No se encontraron resultados para tu búsqueda.
